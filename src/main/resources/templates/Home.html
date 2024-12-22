@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <title>Quiz App</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #343a40;
+        padding: 1rem;
+        color: white;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .navbar .auth-buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .navbar .auth-buttons a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .navbar .auth-buttons button {
+        background-color: #007bff; /* Bootstrap primary color */
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 0.35rem;
+      }
+
+      .navbar .auth-buttons button:hover {
+        background-color: #0056b3; /* Darker primary color on hover */
+      }
+
+      .navbar .auth-buttons form {
+        display: inline;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust height as needed */
+        background-image: linear-gradient(to bottom, #66ebf0, #007bff);
+        background-size: cover;
+        text-align: center;
+        position: relative;
+      }
+
+      /* Start Button Styles */
+      .start-button {
+        background-color: #28a745; /* Bootstrap success color */
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .start-button:hover {
+        background-color: #218838; /* Darker green color on hover */
+        transform: scale(1.05); /* Slight zoom effect */
+      }
+
+      /* Optional: Centered text in the container */
+      .container h1 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      button {
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+          rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+          rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+          rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+          rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+          rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      }
+
+      .container-nav-link-page{
+        display flex;
+        align-items: center;
+      }
+
+      .nav-link-button{
+        background-color: #007bff; /* Bootstrap primary color */
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 0.35rem;
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Quiz App</div>
+      <div class="container-nav-link-page">
+        <a class="nav-link-button" href="/create-user-form">create user</a>
+        <a class="nav-link-button" href="/list-users">user list</a>
+        <a class="nav-link-button" href="/add-question">Add Question</a>
+        <a class="nav-link-button" href="/list-questions">View Questions</a>
+      </div>
+      <div class="auth-buttons">
+        <th:block th:if="${username == null}">
+          <a href="/login"><button>Login</button></a>
+        </th:block>
+        <th:block th:if="${username != null}">
+          <span>Welcome, <span th:text="${username}"></span></span>
+          <form th:action="@{/logout}" method="get">
+            <button type="submit">Logout</button>
+          </form>
+        </th:block>
+      </div>
+    </nav>
+
+    <div class="container">
+      <form action="/startquiz" method="get">
+        <button class="start-button" type="submit">Start Quiz</button>
+      </form>
+    </div>
+
+    <script></script>
+  </body>
+</html>

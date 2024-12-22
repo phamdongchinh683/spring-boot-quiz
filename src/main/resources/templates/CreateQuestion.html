@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Question</title>
+    <style>
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Input Field Styles */
+      .form-container input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #333;
+      }
+
+      /* Button Styles */
+      .form-container button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .form-container button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .form-container {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create New Question</h1>
+
+    <div class="form-container">
+      <form th:action="@{/add-question}" th:object="${question}" method="post">
+        <label for="questionText">Question:</label>
+        <input
+          type="text"
+          id="questionText"
+          name="questionText"
+          th:field="*{questionText}"
+          required
+        />
+
+        <label for="optionA">Option A:</label>
+        <input
+          type="text"
+          id="optionA"
+          name="optionA"
+          th:field="*{optionA}"
+          required
+        />
+
+        <label for="optionB">Option B:</label>
+        <input
+          type="text"
+          id="optionB"
+          name="optionB"
+          th:field="*{optionB}"
+          required
+        />
+
+        <label for="optionC">Option C:</label>
+        <input
+          type="text"
+          id="optionC"
+          name="optionC"
+          th:field="*{optionC}"
+          required
+        />
+
+        <label for="optionD">Option D:</label>
+        <input
+          type="text"
+          id="optionD"
+          name="optionD"
+          th:field="*{optionD}"
+          required
+        />
+
+        <label for="correctAnswer">Correct Answer:</label>
+        <input
+          type="text"
+          id="correctAnswer"
+          name="correctAnswer"
+          th:field="*{correctAnswer}"
+          required
+        />
+
+        <button type="submit">Save Question</button>
+      </form>
+    </div>
+  </body>
+</html>

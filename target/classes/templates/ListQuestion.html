@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List Questions</title>
+    <style>
+      /* Include your existing styles */
+    </style>
+  </head>
+  <body>
+    <h2>All Questions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Question Text</th>
+          <th>Options</th>
+          <th>Correct Answer</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="question : ${questions}">
+          <td th:text="${question.questionText}"></td>
+          <td>
+            A: <span th:text="${question.optionA}"></span><br />
+            B: <span th:text="${question.optionB}"></span><br />
+            C: <span th:text="${question.optionC}"></span><br />
+            D: <span th:text="${question.optionD}"></span>
+          </td>
+          <td th:text="${question.correctAnswer}"></td>
+          <td>
+            <a th:href="@{/update-question/{id}(id=${question.questionId})}"
+              >Edit</a
+            >
+            <form
+              action="/remove-question"
+              method="post"
+              style="display: inline"
+            >
+              <input
+                type="hidden"
+                name="questionId"
+                th:value="${question.questionId}"
+              />
+              <button type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

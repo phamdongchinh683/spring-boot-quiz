@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Quiz App</div>
+      <div class="auth-buttons">
+        <button>Login</button>
+      </div>
+    </nav>
+
+    <div class="login-container">
+      <form class="login-form" action="/validate-login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required /> <br />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required /> <br />
+        <button class="start-button" type="submit">Login</button>
+        <p>
+          Don't have an account?
+          <a href="/register" class="register-link">Register here</a>
+        </p>
+      </form>
+    </div>
+  </body>
+
+  <style>
+    /* Navbar Styles */
+    .navbar {
+      background-color: #343a40; /* Dark background */
+      padding: 1rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar .auth-buttons button {
+      background-color: #007bff; /* Bootstrap primary color */
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 0.35rem;
+    }
+
+    .navbar .auth-buttons button:hover {
+      background-color: #0056b3; /* Darker primary color on hover */
+    }
+
+    /* Login Container Styles */
+    .login-container {
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: linear-gradient(to bottom, #66ebf0, #007bff);
+      background-size: cover;
+      text-align: center;
+      padding: 0 1rem;
+      color: #fff;
+    }
+
+    /* Login Form Styles */
+    .login-form {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      padding: 2rem;
+      border-radius: 0.5rem;
+      max-width: 400px;
+      width: 100%;
+      margin: auto;
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+        rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+        rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+
+    .login-form button {
+      background-color: #28a745; /* Bootstrap success color */
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 0.25rem;
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+        rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+        rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    .login-form button:hover {
+      background-color: #218838; /* Darker green color on hover */
+    }
+
+    .login-form p {
+      margin-top: 1rem;
+    }
+
+    .register-link {
+      color: #17a2b8; /* Bootstrap info color */
+      text-decoration: none;
+    }
+
+    .register-link:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+        rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+        rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+        rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+  </style>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awesome Quiz Application</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="Questions.css">
+</head>
+<body>
+	<nav class="navbar">
+		<div class="logo">Quiz App</div>
+		<div class="auth-buttons">
+			<th:block th:if="${username == null}">
+				<a href="/login"><button>Login</button></a>
+			</th:block>
+			<th:block th:if="${username != null}">
+				<span>Welcome, <span th:text="${username}"></span></span>
+				<form th:action="@{/logout}" method="get">
+					<button type="submit">Logout</button>
+				</form>
+			</th:block>
+		</div>
+	</nav>
+	<div class="container" th:object="${question}">
+		<div class="radio-input" style="">
+			<div class="info">
+				<span class="question"
+					th:text="'Q.'+*{questionId}+' '+*{questionText}">What does
+					CSS stand for?</span>
+			</div>
+			<form id="quiz-form" method="get" action="/submitAnswer">
+				<input type="hidden" name="questionId" id="questionId"
+					th:value="*{questionId}" /> <input type="radio" id="option1"
+					name="question" th:value="*{optionA}"> <label for="option1"
+					th:text="*{optionA}">Computer Style Sheets</label> <input
+					type="radio" id="option2" name="question" th:value="*{optionB}">
+				<label for="option2" th:text="*{optionB}">Cascading Style
+					Sheets</label> <input type="radio" id="option3" name="question"
+					th:value="*{optionC}"> <label for="option3"
+					th:text="*{optionC}">Creative Style Sheets</label> <input
+					type="radio" id="option4" name="question" th:value="*{optionD}">
+				<label for="option4" th:text="*{optionD}">Another Option</label>
+				<div class="btn-container">
+					<a th:href="@{/prevquestion(questionId=*{questionId})}">
+						<button type="button" class="prev">Prev</button>
+					</a>
+					<button type="submit" class="submit">Submit Answers</button>
+					<a th:href="@{/nextquestion(questionId=*{questionId})}">
+						<button type="button" class="next">Next</button>
+					</a>
+				</div>
+				<div class="result success"
+					th:if="${message != null and message.contains('Congratulations')}">
+					<p th:text="${message}">Congratulations!</p>
+				</div>
+				<div class="result error"
+					th:if="${message != null and message.contains('Bad answer')}">
+					<p th:text="${message}">Bad answer</p>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
