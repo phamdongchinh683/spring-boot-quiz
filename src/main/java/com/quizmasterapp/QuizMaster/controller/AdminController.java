@@ -40,14 +40,19 @@ public class AdminController {
 	}
 
 	@GetMapping("/register")
-	public String registerUser() {
-
+	public String registerUser(Model model) {
+		model.addAttribute("user", new Users());
 		return "Register";
+	}
+
+	@PostMapping("/register")
+	public String signUp(@ModelAttribute Users user, Model model) {
+		userservice.registerUser(user);
+		return "redirect:/login";
 	}
 
 	@GetMapping("/login")
 	public String loginPage() {
-
 		return "Login";
 	}
 
